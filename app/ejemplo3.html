@@ -1,0 +1,23 @@
+<!--la etiqueta bind permite que no se cargue la plantilla hasta que no se carguen los javascript-->
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title ng-bind="titulo"></title> 
+</head>
+<body>
+	<div class="container" ng-controller="myCtrl">
+		<h1 ng-bind="mensaje"></h1>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+
+		/*Se declara en el modulo de la aplicacion myApp el controlador myCtrl */
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.mensaje = 'Mensaje desde el controlador';
+			$scope.titulo = 'Ejemplo 2';
+		});
+	</script>	
+</body>
+</html>

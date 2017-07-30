@@ -1,0 +1,47 @@
+<!--$watch es para un solo campo, $watchGroup es para varios campos, en el caso de $watchGroup las variables nuevo y anteriores son un arreglo que estan en el orden en que se declararon los modelos en el primer arreglo -->
+<!DOCTYPE html>
+<html>
+<body>
+
+	<p>Try to change the names.</p>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<form action="#">
+			Contraseña: <input type="password" ng-model="password">
+			Rectificar: <input type="password" ng-model="password2">
+			<p ng-show="errorMinimo">Error: No cumple con el mínimo de caracteres (6)</p>
+			<p ng-hide="coincidencia">Error: Las contraseñas no coinciden</p>
+		</form>
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.errorMinimo = false;
+			$scope.coincidencia = false;
+
+			$scope.$watch('password', function (nuevo, anterior) {
+				if (!nuevo) return;
+				if (nuevo.length < 6) {
+					$scope.errorMinimo = true;
+				} else {
+					$scope.errorMinimo = false;
+				}
+			});
+
+			
+			$scope.$watchGroup(['password', 'password2'], function (nuevos, anteriores) {
+				if (!nuevos) return;
+				if (nuevos[0] === nuevos[1]) {
+					$scope.coincidencia = true;
+				} else {
+					$scope.coincidencia = false;
+				}
+			});
+
+
+		});</script>
+
+	</body>
+	</html>

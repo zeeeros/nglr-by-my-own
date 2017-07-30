@@ -1,0 +1,81 @@
+	<!--One Time Binding hace que se actualice la información de la vista desde el modelo una sola vez, esto es útil para data estática que no se desea actualizar a cada rato, ya que el two way data binding en aplicaciones grandes hace que baje el performance de la aplicacion, para ralizar en BTB se utiliza la notación ::-->
+
+
+	<!doctype html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejemplo 7: One time Binding</title>
+
+
+		<script src="bower_components/angular/angular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('myCtrl',function($scope) {
+				$scope.firstName= "Andrés";
+				$scope.lastName= "Mirabal";
+				var counter = 0;
+				var names = ['Igor', 'Misko', 'Chirayu', 'Lucas'];
+    /*
+     * expose the event object to the scope
+     */
+     $scope.clickMe = function(clickEvent) {
+     	$scope.name = names[counter % names.length];
+     	counter++;
+     };
+ });
+</script>
+
+
+
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<button ng-click="clickMe($event)">Click Me</button>
+		<p id="one-time-binding-example">One time binding: {{::name}}</p>
+		<p id="normal-binding-example">Normal binding: {{name}}</p>
+		<br>
+		<br>
+		<br>
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		<p>Normal binding:</p>
+		<p ng-bind="::firstName +' '+ lastName"></p>
+		Full Name: {{::firstName + " " + lastName}}
+		<br>
+		<br>
+		<br>
+		<p>One time binding:</p>
+		<p ng-bind="firstName +' '+ lastName"></p>
+		Full Name: {{firstName + " " + lastName}}
+
+	</div>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<body ng-app="myApp">
+
+	<p>Try to change the names.</p>
+
+	<div ng-controller="myCtrl">
+
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		<br>
+		<p ng-bind="::firstName +' '+ lastName"></p>
+		Full Name: {{::firstName + " " + lastName}}
+
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.firstName= "Andrés";
+			$scope.lastName= "Mirabal";
+		});
+	</script>
+
+</body>
+</html> -->

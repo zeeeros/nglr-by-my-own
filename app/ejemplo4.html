@@ -1,0 +1,53 @@
+<!--El resultado de este ejemplo se puede ver en el navegador con el uso de las herramientas
+de desarrollo en su apartado consola.
+
+cada boton esta anidadado dentro del otro, los hijos heredan el scope de sus padres, por eso el nieto puede ver e imprimir los valores del hijo
+
+-->
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title ng-bind="titulo"></title> 
+</head>
+<body ng-app>
+	<div class="container">
+		<div ng-controller="padreCtrl">
+			<button ng-click="logPadre()">Padre</button>
+			<div ng-controller="hijoCtrl">
+				<button ng-click="logHijo()">Hijo</button>
+				<div ng-controller="nietoCtrl">
+					<button ng-click="logNieto()">Nieto</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('padreCtrl', function($scope) {
+			$scope.padre = 'Soy el padre';
+			$scope.logPadre = function(){
+				alert($scope.padre);
+				console.log($scope.padre);
+			}
+		});
+
+		app.controller('hijoCtrl', function($scope) {
+			$scope.hijo = 'Soy el primer Hijo';
+			$scope.edad = 36;
+			$scope.logHijo = function(){
+				console.log($scope.hijo, $scope.edad);
+			}
+		});
+
+		app.controller('nietoCtrl', function($scope) {
+			$scope.nieto = 'Soy el nieto';
+			$scope.edad = 4;
+			$scope.logNieto = function(){
+				console.log($scope.nieto, $scope.edad, $scope.hijo);
+			}
+		});
+	</script>
+</body>
+</html>

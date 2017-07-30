@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listador</title>
+</head>
+<body ng-app="myApp" ng-strict-di>
+	<div class="container" ng-controller="playListFactoryController">
+		<ul>
+			<li ng-repeat="titulo in playlist" ng-bind="titulo"></li>
+		</ul>
+	</div>
+	<div class="container" ng-controller="playlistExtendCtrl">
+		<ul>
+			<li ng-repeat="titulo in playlist">
+				{{ titulo }} <a class="button" href="#" ng-click="borrar($index)">&times;</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container" ng-controller="playListServiceController">
+	<p ng-bind="texto"></p>
+		<ul>
+			<li ng-repeat="titulo in playList">
+				{{ titulo }} <a class="button" href="#" ng-click="borrar($index)">&times;</a>
+			</li>
+		</ul>		
+	</div>
+	<div class="container" ng-controller="playListProviderController">
+		<ul>
+			<li ng-repeat="titulo in playList">
+				{{ titulo }} <a class="button" href="#" ng-click="borrar($index)">&times;</a>
+			</li>
+		</ul>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/Decorators/Playlist.js"></script>
+	<script src="js/Config/PlayListProvider.js"></script>
+	<script src="js/Services/Playlist.js"></script>
+	<script src="js/Controllers/PlaylistCtrl.js"></script>
+ 	<script src="js/Controllers/playlistExtendCtrl.js"></script>
+</body>
+</html>

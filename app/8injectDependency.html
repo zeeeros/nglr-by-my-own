@@ -1,0 +1,53 @@
+	<!-- Haciendo uso de la propiedad
+$inject, podremos especificar que necesitamos inyectar la cual es mucho más fácil de entender 
+el código si lo creamos especificando funciones separadas. Hay varias ventajas que nos permite 
+separar el controlador a su propia función nombrada y no en una función anónima. La primera
+es que es mucho más descriptivo el código a la hora de interpretarlo. La más importante
+ventaja es la de poder especificar una propiedad $inject con todas las dependencias que
+necesita el controlador y que al minificar no existe problemas en que se pierda la injeccion
+de los servicios.
+
+Se usa ng-strict-di para evitar injeccio nde dependencia implicita.
+
+	Ver:
+	Different ways of injecting dependency in an AngularJS Application 
+
+	https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/02/28/different-ways-of-injecting-dependency-in-an-angularjs-application.aspx-->
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejemplo 8: Injeccion de dependiencia</title>
+	</head>
+	<body>
+
+		<p>Try to change the names.</p>
+
+		<div ng-app="myApp" ng-strict-di ng-controller="myCtrl">
+
+			First Name: <input type="text" ng-model="firstName"><br>
+			Last Name: <input type="text" ng-model="lastName"><br>
+			<br>
+			<p ng-bind="firstName +' '+ lastName"></p>
+		
+
+		</div>
+		<script src="bower_components/angular/angular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);		
+
+			myCtrl.$inject = ['$scope', '$http'];
+			app.controller('myCtrl',myCtrl);
+
+			function myCtrl($scope, $http) {
+				$scope.firstName= "Andrés";
+				$scope.lastName= "Mirabal";
+			};		
+
+
+
+
+		</script>
+
+	</body>
+	</html>

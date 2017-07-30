@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app lang="es-VE">
+<head>
+	<meta charset="UTF-8">
+	<title>{{respuesta}}</title> 
+</head>
+<body>
+	<div class="container">
+		Entiendes el contenido de este libro?
+		<input type="checkbox" ng-model="respuesta">
+		<div ng-hide="respuesta">
+			<h2>Me esforzare más!</h2>
+		</div>
+		<div ng-show="respuesta">
+			<h2>Felicidades!</h2>
+		</div>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+</body>
+</html>

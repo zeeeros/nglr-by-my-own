@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>{{titulo}}</title> 
+</head>
+<body>
+	<div class="container" ng-controller="myCtrl">
+		<h1>{{mensaje}}</h1>
+		{{titulo}}
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script>
+
+		/*Se declara en el modulo de la aplicacion myApp el controlador myCtrl */
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.mensaje = 'Mensaje desde el controlador';
+			$scope.titulo = 'Ejemplo 2';
+		});
+	</script>
+</body>
+</html>
+
+
+
+<!-- esta version funciona sin registrar el controlador en el modulo de la aplicacion ya que en versiones viejas de angular se podia hacer de esta manera.
+
+ver: https://groups.google.com/forum/#!topic/angular/VD3eY9r7B5U
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>{{titulo}}</title> 
+</head>
+<body>
+	<div class="container" ng-controller="miCtrl">
+		<h1>{{mensaje}}</h1>
+		{{titulo}}
+	</div>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+	<script>
+		function miCtrl ($scope) {
+			$scope.mensaje = 'Mensaje desde el controlador';
+			$scope.titulo = 'Ejemplo 2';
+		}
+	</script>	
+</body>
+</html> -->
