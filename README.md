@@ -1,11 +1,13 @@
-### nglr-by-my-own
-Ejemplos de angular JavaScript MVW Framework
-
-Se incluiran ejemplos prácticos
 =============
 ang-by_my_own
 =============
 
+=======
+=============
+ang-by_my_own
+=============
+
+>>>>>>> Se corrige el archivo readme
 Proyecto inicial basado en el tutorial angular de Maikel Rivero Dorta <mriverodorta@gmail.com> el el proyecto phoneap de google.
 
 Getting Started
