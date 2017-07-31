@@ -1,23 +1,27 @@
-=============
 ang-by_my_own
 =============
 
-Proyecto inicial basado en el tutorial angular de Maikel Rivero Dorta <mriverodorta@gmail.com> el el proyecto phoneap de google.
+Proyecto inicial basado en el tutorial angular de Maikel Rivero Dorta <mriverodorta@gmail.com> y el proyecto phoneapp de google.
 
 Getting Started
 ===============
 To get you started you simply clone this repository and install the dependencies with bower
 I changed the bower components folder to inside the app directory through the .bowerrc file to make ir accesible to the application on the server.
 
+###Clone ang-starter
+```
+git clone --depth=1 https://github.com/zeeeros/nglr-by-my-own your-project-name
+cd your-project-name
+```
 
 ###Install Dependencies
 This project only depends on lodash, angular and angular-route packages to get them you can use npm:
 
 npm install
-
+```
 
 ###Directory Layout
-
+```
 ├── app                                 --> All of the application files
 │   ├── css                             --> Css files for the application
 │   │   └── app.css                     --> Application main style
@@ -55,3 +59,4 @@ npm install
 ├── LICENSE                             --> Application Licence (MIT)
 ├── README.md                           --> Application this file
 └── test                                --> Application Tests folder
+```
