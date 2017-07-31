@@ -16,7 +16,6 @@ To get you started you simply clone this repository and install the dependencies
 I changed the bower components folder to inside the app directory through the .bowerrc file to make ir accesible to the application on the server.
 
 
-
 ###Install Dependencies
 This project only depends on lodash, angular and angular-route packages to get them you can use npm:
 
