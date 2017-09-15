@@ -15,6 +15,7 @@ cd your-project-name
 ```
 
 ###Install Dependencies
+```
 This project only depends on lodash, angular and angular-route packages to get them you can use npm:
 
 npm install

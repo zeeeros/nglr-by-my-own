@@ -1,0 +1,85 @@
+.invisible {display:none}
+.error {color:red}
+
+body {
+	font-size: 100%;	
+	padding: 1.2em;
+}
+
+#activity-result-view {
+	margin: 1em;
+	paddin: 1em;
+	
+	border-top: 2px solid darkgreen;
+	font-weight: bold;
+	font-size: larger;
+}
+
+
+#activity-view {
+	font-size: 100%;
+	width:     420px;
+	
+	text-shadow: 1px 1px 1px #cccccc;
+	border: 2px solid #115f5f;
+	border-radius: 10px;
+}
+
+#activity-view div, p, h2, form {
+	margin-top:    8px;
+	margin-bottom: 8px;
+	padding:0px;
+}
+
+#activity-view #meta-panel {
+	float:right;
+	padding: .5em;
+	border-style:dotted;
+	border-width: 1px;
+}
+
+#activity-view #meta-panel em {
+	display:inline;
+	font-weight: bold;
+}
+
+#activity-view .delete {
+	cursor:pointer;
+	font-weight:bold;
+	color:darkred;
+}
+
+#activity-view h2 {
+	color: darkgreen;
+}
+
+.activityWithFailAttempts {
+	color:red;
+	font-weight: bold;
+}
+
+.littleTime {
+	color:red;
+	font-weight: bold;
+}
+
+
+#activity-view  .boton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	padding:6px 14px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+
+#activity-view  .boton:hover {
+	background-color:#dfdfdf;
+}
+
+#activity-view  .boton:active {
+	position:relative;
+	top:1px;
+}

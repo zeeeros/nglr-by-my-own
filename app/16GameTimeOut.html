@@ -1,0 +1,106 @@
+<!DOCTYPE html>  
+<html data-ng-app="myApp" ng-strict-di>  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
+    <title>Ejemplo Juego de Preguntas JavaScript AngularJS</title>  
+    <link   rel="stylesheet" href="css/activities.css"/>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/app.js"></script>   
+    <script src="js/Models/QuizGame/Actividad.js"></script>  
+    <script src="js/Models/QuizGame/Game.js"></script>
+    <script src="js/Controllers/QuizGameCtrl.js"></script>
+</head>  
+<body>  
+    <header>  
+        <h1>Ejemplo de uso del Framework JavaScript AngularJS</h1>  
+    </header>  
+    <div id="activity-view" data-ng-controller='ActividadController'>  
+        <header id="activity-title">  
+            <h2>Ordenar Palabras:</h2>  
+            <p>Ordene las siguientes palabras según el enunciado:</p>  
+        </header>  
+
+        <div id="activity-content">  
+            <form id="activity-form" name="activity-form">  
+                <input type="hidden" name="activityID" value="{{actividad.id}}"/>  
+                <div id="enunciado">  
+                    <h2>Título</h2>  
+                    <p>{{actividad.title}}</p>  
+                    <ol id="responses">
+                        <li data-ng-repeat="respuesta in actividad.respuestas">  
+                            {{respuesta.word}}  
+                        </li>  
+                    </ol>  
+                </div>  
+
+                <div id="meta-panel">  
+                    <p id="alias"><em>Alias: </em>{{actividad.alias}}</p>  
+                    <p id="timerPanel"><em>Tiempo:</em>  
+                        <span id="timeLimit"  
+                        data-ng-class="{activityWithFailAttempts: (game.timer <= 20)}">  
+                        {{game.timer}}  
+                    </span>  
+                </p>  
+                <p id="attemptsPanel"><em>Nº intentos:</em>  
+                    <span id="fails"  
+                    data-ng-class="{activityWithFailAttempts: (game.userAttempts > 0)}">  
+                    {{game.userAttempts}}  
+                </span>  
+                /  
+                <span id="attempts">{{actividad.attempts}}</span>  
+            </p>  
+        </div>  
+
+        <div id="user-response">  
+            <h2>Solución:</h2>  
+            <ol>  
+                <li data-ng-repeat="respuesta in game.userResponses">  
+                    <div>  
+                        <input name="response" type="text" size="25"  
+                        data-ng-model="respuesta.word"/>  
+
+                        <input type="button" class="delete"  
+                        data-ng-click="game.clearAt($index)"  
+                        data-ng-disabled="! game.isActive()"  
+                        value="X"/>  
+                    </div>  
+                </li>  
+            </ol>  
+        </div>  
+
+        <div id="buttons">  
+            <input type="button" class="boton" id="cancel" name="cancel"  
+            value="Cancelar"  
+            data-ng-disabled="! game.isActive()"  
+            data-ng-click="game.clear()"/>  
+
+            <input type="button" class="boton" id="accept" name="accept"  
+            value="Aceptar"  
+            data-ng-disabled="! game.isActive()"  
+            data-ng-click="game.validate()"/>  
+        </div>  
+
+        <div id="activity-result-view">  
+            <div id="alert-activity-complete-ko"  
+            data-ng-show="game.status == 'finished_KO'">  
+            Lo sentimos pero no ha respondido correctamente.  
+        </div>  
+
+        <div id="alert-activity-complete-ok"  
+        data-ng-show="game.status == 'finished_OK'">  
+        Felicidades! La actividad se ha realizado con éxito.  
+    </div>  
+
+    <div id="alert-activity-complete-end"  
+    data-ng-show="game.status == 'finished_TIMEOUT'">  
+    Lo sentimos, se ha acabado el tiempo.  
+</div>  
+</div>  
+</form>  
+</div>  
+</div>  
+<footer>  
+    <p>Pruebas del framewok Angular JS</a></p>  
+</footer>  
+</body>  
+</html>  

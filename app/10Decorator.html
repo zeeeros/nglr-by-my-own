@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listador</title>
+</head>
+<body ng-app="myApp" ng-strict-di>	
+	<div class="container" ng-controller="playListServiceController">
+		<ul>
+			<li ng-repeat="titulo in playList">
+				{{ titulo }} <a class="button" href="#" ng-click="borrar($index)">&times;</a>
+			</li>
+		</ul>
+		<p ng-bind="texto"></p>	
+	</div>
+	
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/Decorators/Playlist.js"></script>
+	<script src="js/Services/Playlist.js"></script>
+	<script src="js/Controllers/PlaylistDecoratorCtrl.js"></script>
+</body>
+</html>

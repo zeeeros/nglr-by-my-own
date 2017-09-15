@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listador</title>
+</head>
+<body ng-app="myApp" ng-strict-di>
+	<div class="container" ng-controller="PromiseCtrl">
+		<p>Estado del servidor: {{ status }}</p>
+		<p>Estado del servicio HTTP: {{ http }}</p>
+		<p>Estado del servicio de Base de Datos: {{ db }}</p>
+		<p>Estado de las conexiones seguras: {{ ssl }}</p>
+	</div>
+	<div class="container" ng-controller="SomePromisesCtrl"/>
+	<div class="container" ng-controller="constructorPromisesCtrl">
+		<button ng-click="accion(false)">Resolver</button>
+		<button ng-click="accion(true)">Rechazar</button>
+		<div>{{resuelta}}</div>
+		<div>{{rechazada}}</div>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/Controllers/PromiseCtrl.js"></script>
+</body>
+</html>

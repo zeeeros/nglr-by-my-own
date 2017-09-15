@@ -1,7 +1,7 @@
 var playlistModule = angular.module('myApp');
 
 /*Declarando un servicio por medio de un factory, es un singleton, cualquier cambio en el 
-modelo, se propaga por todos los controladores que tengan injectado el servicio playList */
+modelo, se propaga por todos los controladores que tengan injectado el servicio playListFactory */
 playlistModule.factory('playListFactory', [function () {
 	var playlist = [
 	'Factory',
@@ -31,7 +31,7 @@ playlistModule.factory('playListFactory', [function () {
 
 /*Declarando con  el metodo service, esta forma no devuelve ningún objeto y se instacia con un new*/
 playlistModule.service('playListService', [function () {
-	/*esta lista es privad ay nose puede acceder desde afuera*/
+	/*esta lista es privada y no se puede acceder desde afuera*/
 	var playList = [
 	'Services',
 	'The Miracle (Of Joey Ramone)',
