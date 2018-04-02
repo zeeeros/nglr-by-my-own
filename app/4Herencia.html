@@ -1,7 +1,8 @@
 <!--El resultado de este ejemplo se puede ver en el navegador con el uso de las herramientas
 de desarrollo en su apartado consola.
 
-cada boton esta anidadado dentro del otro, los hijos heredan el scope de sus padres, por eso el nieto puede ver e imprimir los valores del hijo
+cada botón esta anidadado dentro del otro, los hijos heredan el scope de sus padres, 
+por eso el nieto puede ver e imprimir los valores del hijo
 
 -->
 <!DOCTYPE html>
@@ -34,7 +35,8 @@ cada boton esta anidadado dentro del otro, los hijos heredan el scope de sus pad
 		});
 
 		app.controller('hijoCtrl', function($scope) {
-			$scope.hijo = 'Soy el primer Hijo';
+			$scope.nombreHijo = 'Andrés';
+			$scope.hijo = 'Soy el Hijo y mi edad es:';
 			$scope.edad = 36;
 			$scope.logHijo = function(){
 				console.log($scope.hijo, $scope.edad);
@@ -42,10 +44,11 @@ cada boton esta anidadado dentro del otro, los hijos heredan el scope de sus pad
 		});
 
 		app.controller('nietoCtrl', function($scope) {
-			$scope.nieto = 'Soy el nieto';
+			$scope.nieto = 'Soy el nieto y mi edad es:';
+			$scope.padreNieto = ', Mi padre es:';
 			$scope.edad = 4;
 			$scope.logNieto = function(){
-				console.log($scope.nieto, $scope.edad, $scope.hijo);
+				console.log($scope.nieto, $scope.edad, $scope.padreNieto, $scope.nombreHijo);
 			}
 		});
 	</script>
