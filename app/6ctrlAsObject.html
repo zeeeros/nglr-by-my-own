@@ -2,6 +2,9 @@
 	estaremos accediendo a propiedades del $scope sino del objeto que exponemos en el controlador. Otro punto a 
 	tener en cuenta es que al no usar el $scope para unir el controlador con la vista, se pierde la posibilidad 
 	de utilizar las demás bondades que brinda el objeto $scope en sí. 
+
+	Basicamente se está haciendo un new del controller y la referencia se está pasando al <<this>>
+
 	nota: Como se puede ver, ahora al controller no se le inyecta el servicio $scope, esto se llama función anónima-->
 	<!DOCTYPE html>
 	<html ng-app="myApp">
@@ -26,9 +29,20 @@
 		<script>
 			var app = angular.module('myApp', []);
 			app.controller('myCtrl', function() {
+
+				/*
+				Puede declararse asi, pero como no se esta perdiendo
+				el ambito de this, se utiliza en este ejemplo de forma 
+				directa.				
+				var vm= this;
+				vm.firstName= "Andres";
+				vm.lastName= "Mirabal";
+				vm.titulo= "un titulo";*/
+
+ 				
 				this.firstName= "Andres";
 				this.lastName= "Mirabal";
-				this.titulo= "un titulo";
+				this.titulo= "un titulo"; 
 			});
 		</script>
 

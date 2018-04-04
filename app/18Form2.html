@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Formulario 2</title>
+</head>
+<body ng-app="myApp" ng-strict-di>
+	<form name="miFormulario">
+		<input type="text" name="nombre" ng_model="model.nombre" required>
+		<span ng-show="miFormulario.nombre.$error.required">Nombre requerido.</span>
+	</form>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app_forms.js"></script>
+</body>
+</html>
+<!-- 
+	Ahora coloco form (no es el de html) con un name, esto creará un formController y 
+	un ngFormController el cua les el encargado de los mecanismos de binging y validación.
+
+	La siguiente sentencia comprueba que el formController tiene una referencia en el scope
+	por medio de miFormulario:
+	angular.element($0).data('$formController') === angular.element($0).scope().miFormulario
+
+
+	Si selecciono el input y veo en chrome el $scope ahora puedo ver tanto el formulario
+	como los distintos modelos de datos dentro de él.
+
+	
+-->

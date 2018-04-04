@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Formulario 1</title>
+</head>
+<body ng-app="myApp" ng-strict-di>
+	<input type="text" name="nombre" ng_model="nombre" required>
+	<span ng-show="nombre.$error.required">Nombre requerido.</span>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app_forms.js"></script>
+</body>
+</html>
+<!-- //TODO: revisar la directiva UI-validate (validaciones adicionales a las del core) 
+	y ngMessage (esto ayuda a reducir mensajes)
+	
+	Recordar: ng_model crea un ngModelController automáticamente (ejercicio 1).
+
+	Si no coloco  form, lo que implica que no se genera el formController el cual
+	me permite disparar y mostrar las validaciones en la vista.
+	
+	Si selecciono el imput y coloco angular.element($0).data()  
+	en la cónsola, puedo ver sus propiedades, ejemplo:
+
+	1) Seleccionar el input.
+	2) colocar en consola el comando, lo que mostrará será el controller generado por
+	   el ng_model.
+	3) La propiedad $error indica que es required es true.
+	
+	Ahora se coloca un valor en el campo y sucede lo siguiente:
+
+	1) La propiedad $error ya no tiene el campo required ya que tenemos un valor.
+	2) la propiedad $modelValue tiene el valor del campo de texto.
+-->

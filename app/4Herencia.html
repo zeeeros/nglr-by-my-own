@@ -7,50 +7,75 @@ por eso el nieto puede ver e imprimir los valores del hijo
 -->
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
 	<meta charset="UTF-8">
-	<title ng-bind="titulo"></title> 
+	<title ng-bind="titulo"></title>
 </head>
+
 <body ng-app>
 	<div class="container">
 		<div ng-controller="padreCtrl">
 			<button ng-click="logPadre()">Padre</button>
-			<div ng-controller="hijoCtrl">
+			<div id="hijo1" ng-controller="hijoCtrl">
 				<button ng-click="logHijo()">Hijo</button>
 				<div ng-controller="nietoCtrl">
 					<button ng-click="logNieto()">Nieto</button>
 				</div>
+			</div>
+			<div ng-controller="hijo2Ctrl">
+				<button ng-click="llamarAMiHermano()">Hijo 2</button>
 			</div>
 		</div>
 	</div>
 	<script src="bower_components/angular/angular.js"></script>
 	<script>
 		var app = angular.module('myApp', []);
-		app.controller('padreCtrl', function($scope) {
+
+		app.controller('padreCtrl', function ($scope) {
 			$scope.padre = 'Soy el padre';
-			$scope.logPadre = function(){
+			$scope.logPadre = function () {
 				alert($scope.padre);
 				console.log($scope.padre);
 			}
 		});
 
-		app.controller('hijoCtrl', function($scope) {
+		app.controller('hijoCtrl', function ($scope) {
 			$scope.nombreHijo = 'Andrés';
-			$scope.hijo = 'Soy el Hijo y mi edad es:';
+			$scope.hijo = 'Soy el Hijo 1 y mi edad es:';
 			$scope.edad = 36;
-			$scope.logHijo = function(){
+			$scope.logHijo = function () {
+				console.log($scope.hijo, $scope.edad);
+			}
+			this.hola=function () {
 				console.log($scope.hijo, $scope.edad);
 			}
 		});
 
-		app.controller('nietoCtrl', function($scope) {
+		/*Esta es la forma como un controller hermano puede acceder a otro, se obtiene
+		  el elemento de la vista <<hijo1>> y con angular.element obtenemos el controller
+		  del hermano*/
+		app.controller('hijo2Ctrl', function ($scope) {
+			$scope.llamarAMiHermano = function () {
+				var hijo1Ctrl = angular.element(document.getElementById('hijo1')).controller();
+				if (hijo1Ctrl && "hola" in hijo1Ctrl){
+				hijo1Ctrl.hola();
+				}
+				else{
+					console.log("no esta bien...");
+				}
+			}
+		});
+
+		app.controller('nietoCtrl', function ($scope) {
 			$scope.nieto = 'Soy el nieto y mi edad es:';
 			$scope.padreNieto = ', Mi padre es:';
 			$scope.edad = 4;
-			$scope.logNieto = function(){
+			$scope.logNieto = function () {
 				console.log($scope.nieto, $scope.edad, $scope.padreNieto, $scope.nombreHijo);
 			}
 		});
 	</script>
 </body>
+
 </html>

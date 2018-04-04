@@ -17,28 +17,38 @@
 		<title>Ejemplo 8: Injeccion de dependiencia</title>
 	</head>
 	<body>
-
 		<p>Cambiar el nombre y el apellido</p>
 
 		<div ng-app="myApp" ng-strict-di ng-controller="myCtrl">
 
-			First Name: <input type="text" ng-model="firstName"><br>
-			Last Name: <input type="text" ng-model="lastName"><br>
-			<br>
-			<p ng-bind="firstName +' '+ lastName"></p>
+			<p>Nombre y Apellido:</p>
+			First Name: <input type="text" ng-model="model.firstName"><br>
+			Last Name: <input type="text" ng-model="model.lastName"><br>
+			<br/>
+			<p>Nombre Completo:</p>
+			<p ng-bind="fullName()"></p>
+			<p>{{fullName()}}</p>
 		
 
 		</div>
 		<script src="bower_components/angular/angular.js"></script>
 		<script>
 			var app = angular.module('myApp', []);		
-
+			
 			myCtrl.$inject = ['$scope', '$http'];
 			app.controller('myCtrl',myCtrl);
+			/*puedo poner el nombre que yo quiera a los atributos de la funcion
+			siempre y cuando mantenga el orden definido en inject*/
+			function myCtrl(scope, http) {
+				
+				scope.model = {
+					firstName:"Andrés",
+					lastName: "Mirabal"
+				};
 
-			function myCtrl($scope, $http) {
-				$scope.firstName= "Andrés";
-				$scope.lastName= "Mirabal";
+				scope.fullName=function(){
+					return (scope.model.firstName+" "+scope.model.lastName)
+				};
 			};
 		</script>
 	</body>

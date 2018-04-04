@@ -8,15 +8,19 @@ var playListModule = angular.module('myApp');
 
 /*Este es el nuevo servicio (nuestra implmentacion) que inyecta el servicio que ha 
 sido decorado*/
-var playListServiceController= function($scope, playListService) {
+var playListServiceController = function ($scope, $log, playListService) {
 	$scope.playList = playListService.listar();
 	$scope.texto = playListService.listToString();
-	$scope.borrar = function(id){playListService.borrar(id);};
+	$scope.borrar = function (id) {
+		playListService.borrar(id);
+		$log.info('Borrado sin decorado de log.info');
+		$log.debug('Borrado con decorado de log.debug');
+	};
 };
 
-playListServiceController.$inject  = ['$scope', 'playListService'];
+playListServiceController.$inject = ['$scope','$log', 'playListService'];
 
-playListModule.controller('playListServiceController',playListServiceController);
+playListModule.controller('playListServiceController', playListServiceController);
 
 
 /* esta es la manera directa pero que es dificil de entender, esto se llama: 

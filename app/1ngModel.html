@@ -2,11 +2,14 @@
 <html ng-app lang="es-VE">
 <head>
 	<meta charset="UTF-8">
-	<title>{{respuesta}}</title> 
+	<title>{{respuesta}}</title>
 </head>
 <body>
 	<div class="container">
 		¿Entiendes el contenido de este libro?
+		<!-- ng_model crea un controlador implícito con una variable
+		llamada <<respuesta>>. ng_hide y ng_show son directivas que permiten
+		ocultar o mostrar un bloque de datos respectivamente -->
 		<input type="checkbox" ng-model="respuesta">
 		<div ng-hide="respuesta">
 			<h2>Me esforzare más!</h2>

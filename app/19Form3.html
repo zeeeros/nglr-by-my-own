@@ -1,0 +1,29 @@
+<!-- Recordar registrar <<ngMessages>> en app.js, yaque es una libreria de tercero.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Formulario 3</title>
+</head>
+
+<body ng-app="myApp" ng-strict-di>
+	<div ng-controller="miFormularioCtrl as miFormularioController">
+		<form name="miFormularioController.miFormulario" ng-submit="miFormularioController.enviar()">
+			<input type="text" name="nombre" ng-model="miFormularioController.model.nombre" required ng-minlength="3" ng-maxlength="8">
+			<div ng-messages="miFormularioController.miFormulario.nombre.$error">
+				<div ng-message="required">Campo requerido.</div>
+				<div ng-message="minlength">La longitud del campo no puede ser menor a 3</div>
+				<div ng-message="maxlength">La longitud del campo no puede ser mayor a 8</div>
+			</div>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
+	<script src="js/app_forms.js"></script>
+	<script src="js/Controllers/miFormulario1Ctrl.js"></script>
+</body>
+
+</html>

@@ -7,7 +7,9 @@
 <body>
 	<div class="container" ng-controller="myCtrl">
 		<h1>{{mensaje}}</h1>
-		{{titulo}}
+		<p>ng_cloak permite que al usar doble brackets (mustache) no se renderize si no ha complido la página</p>
+		<div ng-cloak>{{mensaje}}</div>
+
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script>

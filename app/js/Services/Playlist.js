@@ -1,7 +1,12 @@
 var playlistModule = angular.module('myApp');
 
+/*nota actual: todos los tipos de servicios son singleton segun el curso online... */
+
+
 /*Declarando un servicio por medio de un factory, es un singleton, cualquier cambio en el 
-modelo, se propaga por todos los controladores que tengan injectado el servicio playListFactory */
+modelo, se propaga por todos los controladores que tengan injectado el servicio playListFactory
+
+Se usa cuando se quiere contruir un objeto, luego se invoca.*/
 playlistModule.factory('playListFactory', [function () {
 	var playlist = [
 	'Factory',
@@ -29,7 +34,11 @@ playlistModule.factory('playListFactory', [function () {
 	};
 }]);
 
-/*Declarando con  el metodo service, esta forma no devuelve ningún objeto y se instacia con un new*/
+/*Declarando con  el metodo service, esta forma no devuelve ningún objeto y se instacia con un new.
+
+  Se usa cuando se tenga el concepto de clase y se puede llamar como contructor y se exponene los
+  métodos públicos como <<this>>.
+*/
 playlistModule.service('playListService', [function () {
 	/*esta lista es privada y no se puede acceder desde afuera*/
 	var playList = [
@@ -60,7 +69,10 @@ permiten ser configurados en el momento en que se está configurando la aplicaci
 Mediante el método config del módulo podremos pre configurar el servicio antes de
 que este sea inyectado, esto lo haremos en la carpeta App/js/Config/Playlist.js
 
-Nota: el servcicio no será nombrado <<PlaylistProvider>>, solo lo llamamos <<Playlist>>
+Son los mas importantes porque servicios como $http, $log son servicios hechos del
+tipo provider, es como una mezcla de los dos anteriores.
+
+Nota: el servicio no será nombrado <<PlaylistProvider>>, solo lo llamamos <<Playlist>>
 porque AngularJS cuando ve la palabra <<Provider>> detrás de un servicio automáticamente 
 busca el servicio con el nombre que precede la palabra provider e inyecta el provider de 
 ese servicio en vez de inyectar el $get. De esta forma tendremos acceso a los métodos 

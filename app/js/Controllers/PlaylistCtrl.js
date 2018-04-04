@@ -1,6 +1,6 @@
 /*"use strict"; no me ha funcionado aca, pero en la vista, donde declaro
  ng-app se coloca para indicar que no se deben permitir inyecciones 
- implicitas o se usa el arreglo o la expresion $inject
+ implicitas, o sea, o se usa el arreglo o la expresion $inject
 
 Nota: el nombre de la funcion, la variable de injeccion y del controller 
 debe ser exacto, sino, no se va a registrar el controlador.*/

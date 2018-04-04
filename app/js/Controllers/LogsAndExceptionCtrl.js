@@ -11,7 +11,10 @@ function logsAndExceptionController($scope,$log) {
 	$log.error('Error');
 	$log.debug('Debug');
 
-	/*recordar que se creo un servixcio factory para sobreescribir la excepcion 
-	y que los errores fueran debug.*/
+	/*recordar que se creo un servicio factory (Se instancia el objeto al iniciar la aplicacion) 
+	para sobreescribir la excepcion y que los errores se conviertan en debug.
+	
+	Si se comenta el servicio en el html, se puede ver en consola que se vuelvnete a pintar los
+	erorres normalmente*/
 	throw new Error('Error grave.');
 };
